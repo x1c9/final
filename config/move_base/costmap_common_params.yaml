@@ -1,0 +1,15 @@
+obstacle_range: 6.0
+raytrace_range: 7.0
+footprint: [[0.2, 0.2], [0.2, -0.2], [-0.2, -0.2], [-0.2, 0.2]]
+footprint_padding: 0.2
+inflation_radius: 1.0
+cost_scaling_factor: 10.0
+
+observation_sources: laser_scan_sensor
+laser_scan_sensor: {
+  sensor_frame: lindar,
+  data_type: LaserScan,
+  topic: scan,
+  marking: true,
+  clearing: true
+}

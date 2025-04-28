@@ -1,0 +1,12 @@
+ultralytics 
+opencv-python 
+numpy 
+rospy 
+sensor_msgs 
+cv_bridge
+
+# sudo apt install ros-noetic-explore-lite
+# sudo apt install ros-noetic-gmapping ros-noetic-move-base ros-noetic-explore-lite 
+#  ros-noetic-diff-drive-controller ros-noetic-effort-controllers ros-noetic-joint-state-controller 
+#  ros-noetic-gazebo-ros ros-noetic-robot-state-publisher ros-noetic-rviz ros-noetic-tf 
+#  ros-noetic-controller-manager ros-noetic-xacro

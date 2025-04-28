@@ -1,0 +1,9 @@
+explore:
+  frontier_resolution: 0.1
+  gain_scale: 0.3
+  planner_frequency: 30.0
+  progress_timeout: 0.5
+  visualize: true
+  min_frontier_size: 0.5
+  costmap_topic: /move_base/global_costmap/costmap
+  frame_id: map

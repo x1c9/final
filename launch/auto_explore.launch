@@ -1,0 +1,61 @@
+<launch>
+  <!-- Use Gazebo simulation time -->
+  <param name="use_sim_time" value="true" />
+
+  <!-- Load URDF -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf/urdf.urdf'" />
+  
+  <!-- TF and robot state -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="tf_timeout" value="0.2" />
+  </node>
+
+  <!-- Gmapping SLAM -->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="false">
+    <param name="odom_frame" value="odom"/>
+    <param name="base_frame" value="base_link"/>
+    <rosparam file="$(find final)/config/move_base/gmapping_params.yaml" command="load" />
+  </node>
+
+  <!-- Move Base -->
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <rosparam file="$(find final)/config/move_base/costmap_common_params.yaml" command="load" />
+    <rosparam file="$(find final)/config/move_base/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find final)/config/move_base/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find final)/config/move_base/dwa_planner_params.yaml" command="load" />
+    <rosparam file="$(find final)/config/move_base/explore_lite_params.yaml" command="load" ns="/explore" />
+
+    <param name="base_global_planner" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="planner_frequency" value="30.0"/>
+    <param name="controller_frequency" value="50.0"/>
+    <param name="planner_patience" value="20.0"/>
+    <param name="controller_patience" value="20.0"/>
+    <param name="recovery_behavior_enabled" value="true"/>
+    <param name="conservative_reset_dist" value="3.0"/>
+    <param name="clearing_rotation_allowed" value="true"/>
+    <rosparam>
+      recovery_behaviors:
+        - name: conservative_reset
+          type: clear_costmap_recovery/ClearCostmapRecovery
+        - name: aggressive_reset
+          type: clear_costmap_recovery/ClearCostmapRecovery
+        - name: rotate_recovery
+          type: rotate_recovery/RotateRecovery
+      conservative_reset:
+        reset_distance: 3.0
+        layer_names: ["obstacle_layer"]
+      aggressive_reset:
+        reset_distance: 5.0
+        layer_names: ["obstacle_layer"]
+    </rosparam>
+  </node>
+
+  <!-- explore_lite AUTONOMOUS -->
+  <node name="explore" pkg="explore_lite" type="explore" output="screen">
+    <remap from="costmap" to="/move_base/global_costmap/costmap"/>
+  </node>
+
+  <!-- RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final)/rviz/view_display.rviz" />
+</launch>

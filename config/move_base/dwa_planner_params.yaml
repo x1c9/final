@@ -1,0 +1,39 @@
+# DWAPlannerROS Configuration
+
+# Velocity limits for the robot
+max_vel_x: 0.6
+min_vel_x: 0.2
+max_rotational_vel: 2.0
+min_rotational_vel: 0.3
+
+# Acceleration limits
+acc_lim_x: 3.0
+acc_lim_theta: 3.0
+
+# Tolerances
+xy_goal_tolerance: 0.5
+yaw_goal_tolerance: 0.5
+latch_xy_goal_tolerance: true
+
+# Simulation time for DWA
+sim_time: 2.0
+
+# Number of samples for velocity and rotation
+vx_samples: 20
+vtheta_samples: 40
+
+# Cost function weights
+path_distance_bias: 5.0
+goal_distance_bias: 50.0
+occdist_scale: 0.8
+
+# Forward point distance for DWA
+forward_point_distance: 0.4
+
+# Buffer and scaling
+stop_time_buffer: 0.15
+scaling_speed: 0.28
+max_scaling_factor: 0.22
+
+# Patience for controller
+controller_patience: 10.0

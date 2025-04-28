@@ -13,7 +13,7 @@ roslaunch final gazebo.launch
 roslaunch final display.launch
 ```
 
-## Scan map autonomously
+## Autonomous map scanning
 ```bash
 roslaunch final display.launch
 ```

@@ -2,11 +2,25 @@
   <!-- Use Gazebo simulation time -->
   <param name="use_sim_time" value="true" />
 
+  <param name="robot_description" command="$(find xacro)/xacro $(find final)/urdf/urdf.urdf" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find final)/world/my_world.world" />
+  </include>
+
+  <node
+  name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+  args="-param robot_description -urdf -model final" output="screen" />
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
   <!-- Gmapping SLAM -->
-  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="false">
-    <param name="odom_frame" value="odom"/>
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
     <param name="base_frame" value="base_footprint"/>
-    <rosparam file="$(find final)/config/move_base/gmapping_params.yaml" command="load" />
+    <param name="odom_frame" value="odom"/>
+    <param name="map_frame"  value="map"/>
+    <rosparam command="load" file="$(find final)/config/gmapping_params.yaml" />
   </node>
 
   <!-- Move Base -->

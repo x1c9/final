@@ -1,7 +1,11 @@
-## Package
+## Python libraries
 ```bash
 pip install -r requirements.txt
-sudo apt-get install ros-noetic-amcl ros-noetic-explore-lite ros-noetic-gmapping ros-noetic-move-base
+```
+
+## ROS packages
+```bash
+sudo apt-get install ros-noetic-amcl ros-noetic-explore-lite ros-noetic-gmapping ros-noetic-move-base ros-noetic-dwa-local-planner
 ```  
 
 ## Simulation in Gazebo

@@ -4,6 +4,4 @@
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final)/rviz/view_display.rviz" />
 
-  <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen" />
-
 </launch>

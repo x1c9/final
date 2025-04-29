@@ -3,7 +3,7 @@
   <param name="use_sim_time" value="true" />
 
   <!-- Load URDF robot -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf/urdf.urdf'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf.urdf'" />
 
   <!-- TF và state publisher -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>

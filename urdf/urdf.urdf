@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
-     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<?xml version="1.0" ?>
 <robot name="urdf">
+  <link name="base_footprint" />
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
 
   <link name="base_link">
     <inertial>
@@ -13,7 +16,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/base_link.STL" />
+        <mesh filename="package://final/meshes/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -22,10 +25,11 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/base_link.STL" />
+        <mesh filename="package://final/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
+
   <link name="Left_forward_wheel">
     <inertial>
       <origin xyz="1.2490009027033E-16 -6.1409211049579E-16 -0.0318963397161268" rpy="0 0 0" />
@@ -35,7 +39,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Left_forward_wheel.STL" />
+        <mesh filename="package://final/meshes/Left_forward_wheel.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -44,10 +48,11 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Left_forward_wheel.STL" />
+        <mesh filename="package://final/meshes/Left_forward_wheel.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="Left_forward_joint" type="continuous">
     <origin xyz="0.1135 0.165 -0.0179" rpy="-1.5708 0 0" />
     <parent link="base_link" />
@@ -55,6 +60,7 @@
     <axis xyz="0 0 1" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
+
   <link name="Right_forward_wheel">
     <inertial>
       <origin xyz="-1.2490009027033E-16 4.85722573273506E-17 -0.0318963396900528" rpy="0 0 0" />
@@ -64,7 +70,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Right_forward_wheel.STL" />
+        <mesh filename="package://final/meshes/Right_forward_wheel.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -73,10 +79,11 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Right_forward_wheel.STL" />
+        <mesh filename="package://final/meshes/Right_forward_wheel.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="Right_forward_joint" type="continuous">
     <origin xyz="0.1135 -0.165 -0.0179" rpy="1.5708 0 0" />
     <parent link="base_link" />
@@ -84,6 +91,7 @@
     <axis xyz="0 0 -1" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
+
   <link name="Left_backward_wheel">
     <inertial>
       <origin xyz="-3.88578058618805E-16 1.52655665885959E-16 -0.0318963396983103" rpy="0 0 0" />
@@ -93,7 +101,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Left_backward_wheel.STL" />
+        <mesh filename="package://final/meshes/Left_backward_wheel.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -102,10 +110,11 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Left_backward_wheel.STL" />
+        <mesh filename="package://final/meshes/Left_backward_wheel.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="Left_backward_joint" type="continuous">
     <origin xyz="-0.1135 0.165 -0.0179" rpy="-1.5708 0 0" />
     <parent link="base_link" />
@@ -113,6 +122,7 @@
     <axis xyz="0 0 1" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
+
   <link name="Right_backward_wheel">
     <inertial>
       <origin xyz="3.88578058618805E-16 3.81639164714898E-17 -0.0318963396918449" rpy="0 0 0" />
@@ -122,7 +132,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Right_backward_wheel.STL" />
+        <mesh filename="package://final/meshes/Right_backward_wheel.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -131,10 +141,11 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/Right_backward_wheel.STL" />
+        <mesh filename="package://final/meshes/Right_backward_wheel.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="Right_backward_joint" type="continuous">
     <origin xyz="-0.1135 -0.165 -0.0179" rpy="1.5708 0 0" />
     <parent link="base_link" />
@@ -142,7 +153,8 @@
     <axis xyz="0 0 -1" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
-  <link name="lindar">
+
+  <link name="lidar">
     <inertial>
       <origin xyz="-0.00829409957033964 -6.93889390390723E-18 0.010701142222791" rpy="0 0 0" />
       <mass value="0.146695752131392" />
@@ -151,7 +163,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/lindar.STL" />
+        <mesh filename="package://final/meshes/lidar.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -160,106 +172,18 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://midterm/urdf/meshes/lindar.STL" />
+        <mesh filename="package://final/meshes/lidar.STL" />
       </geometry>
     </collision>
   </link>
+
   <joint name="lidar_joint" type="fixed">
     <origin xyz="0.108 0 0.042" rpy="0 0 0" />
     <parent link="base_link" />
-    <child link="lindar" />
+    <child link="lidar" />
     <axis xyz="0 0 0" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
-  <!-- <link name="camera">
-    <inertial>
-      <origin xyz="0.00496941747572817 0.00663466659504938 0.00325439033106007" rpy="0 0 0" />
-      <mass value="0.00339776560761352" />
-      <inertia ixx="2.0587228463327E-07" ixy="-1.65206280027943E-23" ixz="5.15967188711596E-23" iyy="1.83317693669082E-07" iyz="3.02855427268585E-08" izz="1.84150046477411E-07" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/camera.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/camera.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="camera_joint" type="fixed">
-    <origin xyz="0.15 -0.0049694 -0.011361" rpy="3.1416 0 1.5708" />
-    <parent link="base_link" />
-    <child link="camera" />
-    <axis xyz="0 0 0" />
-    <dynamics damping="0.1" friction="0.1" />
-  </joint> -->
-  <!-- <link name="link1">
-    <inertial>
-      <origin xyz="0.0130133047131633 0.0889204179261883 -0.0296765696165617" rpy="0 0 0" />
-      <mass value="0.164486554024359" />
-      <inertia ixx="0.000544779739701674" ixy="-7.45784439965975E-05" ixz="9.94065100983671E-08" iyy="4.6096716851494E-05" iyz="6.79248063491979E-07" izz="0.000565982592073471" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/link1.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/link1.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="link1_joint" type="revolute">
-    <origin xyz="-0.025 0.0295 0.085" rpy="1.5708 -0.85308 3.1416" />
-    <parent link="base_link" />
-    <child link="link1" />
-    <axis xyz="0 0 1" />
-    <limit lower="0" upper="0" effort="0" velocity="0" />
-    <dynamics damping="0.1" friction="0.1" />
-  </joint>
-  <link name="link2">
-    <inertial>
-      <origin xyz="0.104899329069202 0.0379645740880208 -0.0321285668568063" rpy="0 0 0" />
-      <mass value="0.184332677556066" />
-      <inertia ixx="0.000107535031720432" ixy="-0.000205718924701572" ixz="-1.78149467639473E-06" iyy="0.000593870869716796" iyz="-6.41437127577083E-07" izz="0.000681305864636033" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/link2.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://midterm/urdf/meshes/link2.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="link2_joint" type="revolute">
-    <origin xyz="0.024617 0.16821 -0.08085" rpy="3.1416 0 2.2885" />
-    <parent link="link1" />
-    <child link="link2" />
-    <axis xyz="0 0 1" />
-    <limit lower="0" upper="0" effort="0" velocity="0" />
-    <dynamics damping="0.1" friction="0.1" />
-  </joint> -->
 
   <!-- THÊM plugin differential_drive_controller -->
   <gazebo>
@@ -283,31 +207,7 @@
     </plugin>
   </gazebo>
 
-  <!-- THÊM plugin differential_drive_controller -->
-  <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <updateRate>100.0</updateRate>
-      <leftJoint>Left_forward_joint</leftJoint>
-      <rightJoint>Right_forward_joint</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.215</wheelDiameter>
-      <wheelAcceleration>1.0</wheelAcceleration>
-      <wheelTorque>20</wheelTorque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_link</robotBaseFrame>
-      <odometrySource>encoder</odometrySource>
-      <publishWheelTF>false</publishWheelTF>
-      <publishOdom>false</publishOdom>
-      <publishOdomTF>false</publishOdomTF>
-      <publishTf>0</publishTf>
-      <publishWheelJointState>true</publishWheelJointState>
-      <legacyMode>false</legacyMode>
-    </plugin>
-  </gazebo>
-
-  <gazebo reference="lindar">
+  <gazebo reference="lidar">
     <sensor name="lidar_sensor" type="ray">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
@@ -334,7 +234,7 @@
       </ray>
       <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan</topicName>
-        <frameName>lindar</frameName>
+        <frameName>lidar</frameName>
       </plugin>
     </sensor>
   </gazebo>
@@ -434,81 +334,5 @@
       </plugin>
     </sensor>
   </gazebo>
-
-
-  <!-- Transmission cho 4 khop banh xe -->
-  <transmission name="Left_forward_joint_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="Left_forward_joint_motor">
-
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="Left_forward_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-
-  <!-- Transmition -->
-  <transmission name="Right_forward_joint_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="Right_forward_joint_motor">
-
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="Right_forward_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-
-  <!-- Transmition -->
-  <transmission name="Left_backward_joint_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="Left_backward_joint_motor">
-
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="Left_backward_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-
-  <!-- Transmition -->
-  <transmission name="Right_backward_joint_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="Right_backward_joint_motor">
-
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="Right_backward_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
-  <!-- Transmission cho khớp arm1 -->
-  <!-- <transmission name="arm1_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="link1_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="link1_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm2_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="link2_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="link2_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
-  </gazebo> -->
 
 </robot>

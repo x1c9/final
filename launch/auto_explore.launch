@@ -2,14 +2,6 @@
   <!-- Use Gazebo simulation time -->
   <param name="use_sim_time" value="true" />
 
-  <!-- Load URDF -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf/urdf.urdf'" />
-  
-  <!-- TF and robot state -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-    <param name="tf_timeout" value="0.2" />
-  </node>
-
   <!-- Gmapping SLAM -->
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="false">
     <param name="odom_frame" value="odom"/>

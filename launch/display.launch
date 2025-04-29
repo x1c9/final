@@ -1,17 +1,9 @@
 <launch>
-  <!-- Tham số robot URDF -->
-  <param name="robot_description" textfile="$(find final)/urdf/urdf/urdf.urdf" />
-
-  <!-- Publish trạng thái joint và TF -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
-  <!-- RViz với cấu hình riêng -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final)/rviz/view_display.rviz" />
 
-  <!-- Static transform base_footprint -> base_link -->
-  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher"
-        args="0 0 0 0 0 0 base_link base_footprint 40" />
-
-  <!-- Gmapping SLAM node -->
   <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen" />
+
 </launch>

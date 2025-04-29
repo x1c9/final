@@ -1,42 +1,16 @@
 <launch>
-  <!-- Load robot description (URDF) vào parameter server -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf/urdf.urdf'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf.urdf'" />
   <arg name="x_pos" default="-1.0"/>
   <arg name="y_pos" default="1.0"/>
   <arg name="z_pos" default="0.3"/>
 
-  <!-- Khởi động Gazebo với thế giới có vật thể (my_world.world) -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find final)/world/my_world.world" />
-    <arg name="paused" value="false" />
-    <arg name="use_sim_time" value="true" />
-    <arg name="gui" value="true" />
   </include>
 
-  <!-- Xuất TF cố định từ base_footprint -> base_link -->
   <node
-    name="tf_footprint_base"
-    pkg="tf"
-    type="static_transform_publisher"
-    args="0 0 0 0 0 0 base_link base_footprint 40" />
-
-  <!-- Spawn robot từ URDF -->
-  <node
-  name="spawn_model"
-  pkg="gazebo_ros"
-  type="spawn_model"
+  name="spawn_model" pkg="gazebo_ros" type="spawn_model"
   args="-param robot_description -urdf -model final -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)"
   output="screen" />
-
-
-  
-  <!-- Khởi động các controller cho tay máy -->
-  <rosparam file="$(find final)/config/arm_controllers.yaml" command="load" />
-  <node
-    name="controller_spawner"
-    pkg="controller_manager"
-    type="spawner"
-    args="joint_state_controller"
-    output="screen" />
 
 </launch>

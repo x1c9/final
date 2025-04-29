@@ -2,17 +2,6 @@
   <!-- Dùng thời gian mô phỏng từ Gazebo -->
   <param name="use_sim_time" value="true" />
 
-  <!-- Load URDF robot -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find final)/urdf/urdf.urdf'" />
-
-  <!-- TF và state publisher -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
-
-  <!-- Static TF base_footprint -> base_link -->
-  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher"
-        args="0 0 0 0 0 0 base_link base_footprint 40" />
-
   <!-- Load bản đồ tĩnh -->
   <arg name="map_file" default="$(find final)/maps/my_map.yaml" />
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
@@ -20,13 +9,13 @@
   <!-- AMCL localization -->
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <param name="odom_frame_id" value="odom" />
-    <param name="base_frame_id" value="base_link" />
+    <param name="base_frame_id" value="base_footprint" />
     <param name="scan_topic" value="scan" />
-    <param name="min_particles" value="500"/>
-    <param name="max_particles" value="2000"/>
-    <param name="update_min_d" value="0.2"/>
-    <param name="update_min_a" value="0.2"/>
-    <param name="resample_interval" value="1"/>
+    <param name="min_particles" value="500" />
+    <param name="max_particles" value="2000" />
+    <param name="update_min_d" value="0.2" />
+    <param name="update_min_a" value="0.2" />
+    <param name="resample_interval" value="1" />
   </node>
 
   <!-- MOVE BASE chính thức -->
@@ -38,8 +27,5 @@
     <param name="base_global_planner" value="navfn/NavfnROS" />
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
   </node>
-
-  <!-- Giao diện RViz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find final)/rviz/view_display.rviz" />
 
 </launch>

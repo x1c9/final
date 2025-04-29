@@ -185,28 +185,6 @@
     <dynamics damping="0.1" friction="0.1" />
   </joint>
 
-  <!-- THÊM plugin differential_drive_controller -->
-  <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <updateRate>100.0</updateRate>
-      <leftJoint>Left_backward_joint</leftJoint>
-      <rightJoint>Right_backward_joint</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.215</wheelDiameter>
-      <wheelAcceleration>1.0</wheelAcceleration>
-      <wheelTorque>20</wheelTorque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>/odom</odometryFrame>
-      <robotBaseFrame>/base_link</robotBaseFrame>
-      <odometrySource>world</odometrySource>
-      <publishWheelTF>false</publishWheelTF>
-      <publishOdom>false</publishOdom>
-      <publishWheelJointState>true</publishWheelJointState>
-      <legacyMode>false</legacyMode>
-    </plugin>
-  </gazebo>
-
   <gazebo reference="lidar">
     <sensor name="lidar_sensor" type="ray">
       <pose>0 0 0 0 0 0</pose>
@@ -335,4 +313,15 @@
     </sensor>
   </gazebo>
 
+
+  <gazebo>
+    <plugin name="omni_steering" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <cmdTimeout>1.0</cmdTimeout>
+    </plugin>
+  </gazebo>
 </robot>

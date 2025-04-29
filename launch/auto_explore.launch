@@ -5,7 +5,7 @@
   <!-- Gmapping SLAM -->
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="false">
     <param name="odom_frame" value="odom"/>
-    <param name="base_frame" value="base_link"/>
+    <param name="base_frame" value="base_footprint"/>
     <rosparam file="$(find final)/config/move_base/gmapping_params.yaml" command="load" />
   </node>
 
